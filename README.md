@@ -1,5 +1,9 @@
 # BiRoAD project website
 
+Website: https://sxy7147.github.io/biroad-website/
+
+Repository: https://github.com/sxy7147/biroad-website
+
 A standalone, dependency-free research website for **BiRoAD: Learning Shared and Role-Adaptive Representations for Bimanual Manipulation**. All images, fonts (system font stack), videos, and the paper are local; the page needs no third-party services or build step.
 
 ## Preview
@@ -21,7 +25,7 @@ Use this folder's **contents** as the root of a dedicated website repository (su
 3. Under **Build and deployment**, choose **Deploy from a branch**, then **main** and **/(root)**; save.
 4. Open the URL shown in Pages once deployment completes. For a project repository it normally has the form `https://OWNER.github.io/REPOSITORY/`.
 
-Every asset path is relative, so no code change is required for a repository-name prefix. No custom domain, remote repository, publishing workflow, analytics, or external font service has been configured.
+Every asset path is relative, so no code change is required for a repository-name prefix. This repository publishes the `main` branch root through GitHub Pages with HTTPS enabled. There is no custom domain, analytics, or external font service. Push future website changes to `main` to redeploy.
 
 Official instructions: https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site
 
