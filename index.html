@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BiRoAD learns shared and role-adaptive representations for bimanual manipulation through symmetric–antisymmetric feature decomposition.">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="BiRoAD — Shared Coordination, Adaptive Roles">
+  <meta property="og:description" content="Learning Shared and Role-Adaptive Representations for Bimanual Manipulation. Paper, method, and paired real-world demonstrations.">
+  <meta property="og:type" content="website">
+  <title>BiRoAD | Learning Shared and Role-Adaptive Representations</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="wordmark" href="#main" aria-label="BiRoAD home">Bi<span>RoAD</span><span class="brand-dot">.</span></a>
+      <div class="nav-links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#experiments">Experiments</a></div>
+      <a class="nav-paper" href="assets/paper/biroad.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="paper-title">
+      <p class="eyebrow">Bimanual role-adaptive decomposition</p>
+      <h1 id="paper-title"><span class="hero-name">Bi<span>RoAD</span></span><span class="paper-title">Learning Shared and Role-Adaptive<br class="desktop-break"> Representations for Bimanual Manipulation</span></h1>
+      <p class="authors"><span><a href="https://sxy7147.github.io/" target="_blank" rel="noopener">Yan Shen</a><sup>1,4,*</sup></span><span>Yuchen Liu<sup>1,*</sup></span><span>Feng Jiang<sup>1</sup></span><span>Hangtian Hu<sup>1</sup></span><span><a href="https://clorislili.github.io/clorisLi/" target="_blank" rel="noopener">Xiaoqi Li</a><sup>1,4</sup></span><span>Shu Chen<sup>3</sup></span><span><a href="https://warshallrho.github.io/" target="_blank" rel="noopener">Ruihai Wu</a><sup>2</sup></span><span><a href="https://zsdonghao.github.io/" target="_blank" rel="noopener">Hao Dong</a><sup>1,4,†</sup></span></p>
+      <div class="affiliations"><span><sup>1</sup> CFCS, School of Computer Science, Peking University</span><span><sup>2</sup> UC Berkeley</span><span><sup>3</sup> HKUST (Guangzhou)</span><span><sup>4</sup> PrimeBot Research Institute</span></div>
+      <p class="author-notes">* Equal contribution &nbsp; · &nbsp; † Corresponding author</p>
+      <div class="hero-actions"><a class="button primary" href="assets/paper/biroad.pdf" target="_blank" rel="noopener"><span aria-hidden="true">↗</span> Read the paper</a><a class="button" href="#overview"><span aria-hidden="true">▷</span> Watch video</a><a class="button" href="#experiments">Real-world demos <span aria-hidden="true">↓</span></a></div>
+      <figure class="hero-figure">
+        <div class="hero-pair">
+          <div><img src="assets/images/random-bottle.jpg" width="960" height="540" alt="Two robot arms opening a bottle in the first scene configuration" fetchpriority="high"><span class="scene-label scene-a">Scene configuration A</span></div>
+          <div><img src="assets/images/symmetric-bottle.jpg" width="960" height="540" alt="The paired bottle-opening demonstration with a different arm-role assignment" fetchpriority="high"><span class="scene-label scene-b">Scene configuration B</span></div>
+        </div>
+        <figcaption><strong>Same task. Different roles.</strong><span>Sharing coordination across arms while adapting their roles to the scene.</span><a href="#experiments" aria-label="Watch paired real-world experiments">Watch the pairs <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+    </section>
+
+    <section id="overview" class="section container" aria-labelledby="overview-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / Overview</p><h2 id="overview-title">Two arms. One coordinated policy.</h2></div><p>A modular representation framework for scene-conditioned role adaptation.</p></div>
+      <div class="overview-layout">
+        <div class="overview-video"><video controls playsinline preload="none" poster="assets/images/video-poster.jpg" aria-label="BiRoAD overview and experimental demonstrations"><source src="assets/videos/overview.mp4" type="video/mp4">Your browser does not support embedded video. <a href="assets/videos/overview.mp4">Download the overview video.</a></video><p class="media-caption">BiRoAD · Overview and experimental demonstrations · 3 min 51 sec</p></div>
+        <div class="abstract"><h3>Abstract</h3><p>Bimanual manipulation requires policies that coordinate two arms while adapting their functional roles to scene geometry, object configuration, and task context. Uneven role distributions in demonstrations can limit generalization to underrepresented arm–role configurations.</p><p>BiRoAD decomposes paired arm trajectory or action-token features into <strong>swap-symmetric</strong> components for shared coordination and <strong>swap-antisymmetric</strong> components for role-specific distinctions. The components are recomposed as residual updates to the original representations.</p><p>This modular transformation preserves the policy inputs and imitation-learning objective, and requires no manually defined role labels. Experiments across balanced and imbalanced role distributions show improved robustness over corresponding base policies, with notable gains on underrepresented configurations.</p><a class="text-link" href="assets/paper/biroad.pdf" target="_blank" rel="noopener">Read the full paper <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <figure class="paper-figure"><img src="assets/images/overview.png" width="1400" height="854" loading="lazy" alt="BiRoAD overview: diverse bimanual tasks, imbalanced training configurations, and shared and role-specific residual feature updates"><figcaption><strong>Figure 1: Overview of BiRoAD.</strong> (a) Bimanual tasks in which scene initializations induce different functional roles for two arms. (b) Under imbalanced training distributions, a base policy may favor frequent arm–role configurations and perform less reliably when the scene induces a less common role assignment. (c) BiRoAD decomposes paired arm features into swap-symmetric shared coordination and swap-antisymmetric role-specific components, then recomposes them as residual updates to encourage structured cross-arm sharing while preserving scene-dependent role adaptation.</figcaption></figure>
+    </section>
+
+    <section id="method" class="section section-tinted" aria-labelledby="method-title"><div class="container">
+      <div class="section-heading"><div><p class="eyebrow">02 / Method</p><h2 id="method-title">Share what stays.<br>Adapt what changes.</h2></div><p>Decompose paired features, learn complementary components, and recompose them as residual updates.</p></div>
+      <div class="method-steps">
+        <article><span class="step-number">01</span><h3>Decompose</h3><p>Map left- and right-arm features to their mean and signed difference.</p><div class="equation"><i>m</i> = ½ (<i>f</i><sub>L</sub> + <i>f</i><sub>R</sub>)<br><i>d</i> = ½ (<i>f</i><sub>L</sub> − <i>f</i><sub>R</sub>)</div></article>
+        <article><span class="step-number">02</span><h3>Share &amp; specialize</h3><p>A symmetric branch models shared coordination; an antisymmetric branch models role-specific variation.</p><div class="branch-labels"><span>Shared · swap-invariant</span><span>Role-specific · sign-reversing</span></div></article>
+        <article><span class="step-number">03</span><h3>Recompose</h3><p>Add the shared component to both arms and the role-specific component with opposite signs.</p><div class="equation">Δ<i>f</i><sub>L</sub> = <i>W</i><sub>S</sub><i>z</i><sub>S</sub> + <i>W</i><sub>A</sub><i>z</i><sub>A</sub><br>Δ<i>f</i><sub>R</sub> = <i>W</i><sub>S</sub><i>z</i><sub>S</sub> − <i>W</i><sub>A</sub><i>z</i><sub>A</sub></div></article>
+      </div>
+      <figure class="paper-figure method-figure"><img src="assets/images/method.png" width="1400" height="605" loading="lazy" alt="BiRoAD module and policy integration: symmetric and antisymmetric branches refine contextualized and pre-output action features inside an existing action decoder"><figcaption>BiRoAD integrates into the action-generation pathway of 3DFA and a π₀-style policy. It imposes a local feature-level structure; the full policy is not required to be strictly equivariant. Figure 2.</figcaption></figure>
+      <div class="method-notes"><span>No manual role labels</span><span>Unchanged policy interface</span><span>Unchanged training objective</span></div>
+    </div></section>
+
+    <section id="experiments" class="section container" aria-labelledby="experiments-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / Real-world experiments</p><h2 id="experiments-title">See the roles adapt.</h2></div><p>Five tasks. Two scene configurations per task.<br>All clips are shown at <strong>3× recorded speed</strong>.</p></div>
+      <p class="section-intro">A pair of Franka Research 3 arms performs the same task under different object configurations. Compare the paired demonstrations to see how the arms change their functional roles.</p>
+      <div class="experiment-list">
+        <article class="experiment" aria-labelledby="bouquet-title"><div class="experiment-heading"><div><span class="task-number">01</span><h3 id="bouquet-title">Bouquet handover</h3></div><span class="speed-tag">3× speed</span></div><div class="video-pair"><figure><video controls muted playsinline preload="none" poster="assets/images/random-bouque.jpg" aria-label="Bouquet handover, scene configuration A"><source src="assets/videos/random/bouque_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot a"></span>Scene configuration A</figcaption></figure><figure><video controls muted playsinline preload="none" poster="assets/images/symmetric-bouque.jpg" aria-label="Bouquet handover, scene configuration B"><source src="assets/videos/symmetric/bouque_1_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot b"></span>Scene configuration B</figcaption></figure></div><div class="pair-controls"><button class="pair-toggle" type="button" aria-label="Play both bouquet handover videos">Play both</button><button class="pair-restart" type="button" aria-label="Restart both bouquet handover videos">Restart pair</button><span class="pair-status" role="status" aria-live="polite"></span></div></article>
+        <article class="experiment" aria-labelledby="drawer-title"><div class="experiment-heading"><div><span class="task-number">02</span><h3 id="drawer-title">Put banana into drawer</h3></div><span class="speed-tag">3× speed</span></div><div class="video-pair"><figure><video controls muted playsinline preload="none" poster="assets/images/random-drawer.jpg" aria-label="Put banana into drawer, scene configuration A"><source src="assets/videos/random/drawer_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot a"></span>Scene configuration A</figcaption></figure><figure><video controls muted playsinline preload="none" poster="assets/images/symmetric-drawer.jpg" aria-label="Put banana into drawer, scene configuration B"><source src="assets/videos/symmetric/drawer_1_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot b"></span>Scene configuration B</figcaption></figure></div><div class="pair-controls"><button class="pair-toggle" type="button" aria-label="Play both put banana into drawer videos">Play both</button><button class="pair-restart" type="button" aria-label="Restart both put banana into drawer videos">Restart pair</button><span class="pair-status" role="status" aria-live="polite"></span></div></article>
+        <article class="experiment" aria-labelledby="bottle-title"><div class="experiment-heading"><div><span class="task-number">03</span><h3 id="bottle-title">Open bottle cap</h3></div><span class="speed-tag">3× speed</span></div><div class="video-pair"><figure><video controls muted playsinline preload="none" poster="assets/images/random-bottle.jpg" aria-label="Open bottle cap, scene configuration A"><source src="assets/videos/random/bottle_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot a"></span>Scene configuration A</figcaption></figure><figure><video controls muted playsinline preload="none" poster="assets/images/symmetric-bottle.jpg" aria-label="Open bottle cap, scene configuration B"><source src="assets/videos/symmetric/bottle_1_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot b"></span>Scene configuration B</figcaption></figure></div><div class="pair-controls"><button class="pair-toggle" type="button" aria-label="Play both open bottle cap videos">Play both</button><button class="pair-restart" type="button" aria-label="Restart both open bottle cap videos">Restart pair</button><span class="pair-status" role="status" aria-live="polite"></span></div></article>
+        <article class="experiment" aria-labelledby="sweep-title"><div class="experiment-heading"><div><span class="task-number">04</span><h3 id="sweep-title">Sweep to dustpan</h3></div><span class="speed-tag">3× speed</span></div><div class="video-pair"><figure><video controls muted playsinline preload="none" poster="assets/images/random-sweep.jpg" aria-label="Sweep to dustpan, scene configuration A"><source src="assets/videos/random/sweep_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot a"></span>Scene configuration A</figcaption></figure><figure><video controls muted playsinline preload="none" poster="assets/images/symmetric-sweep.jpg" aria-label="Sweep to dustpan, scene configuration B"><source src="assets/videos/symmetric/sweep_1_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot b"></span>Scene configuration B</figcaption></figure></div><div class="pair-controls"><button class="pair-toggle" type="button" aria-label="Play both sweep to dustpan videos">Play both</button><button class="pair-restart" type="button" aria-label="Restart both sweep to dustpan videos">Restart pair</button><span class="pair-status" role="status" aria-live="polite"></span></div></article>
+        <article class="experiment" aria-labelledby="pour-title"><div class="experiment-heading"><div><span class="task-number">05</span><h3 id="pour-title">Pour water</h3></div><span class="speed-tag">3× speed</span></div><div class="video-pair"><figure><video controls muted playsinline preload="none" poster="assets/images/random-pour.jpg" aria-label="Pour water, scene configuration A"><source src="assets/videos/random/pour_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot a"></span>Scene configuration A</figcaption></figure><figure><video controls muted playsinline preload="none" poster="assets/images/symmetric-pour.jpg" aria-label="Pour water, scene configuration B"><source src="assets/videos/symmetric/pour_1_v1.mp4" type="video/mp4"></video><figcaption><span class="config-dot b"></span>Scene configuration B</figcaption></figure></div><div class="pair-controls"><button class="pair-toggle" type="button" aria-label="Play both pour water videos">Play both</button><button class="pair-restart" type="button" aria-label="Restart both pour water videos">Restart pair</button><span class="pair-status" role="status" aria-live="polite"></span></div></article>
+      </div>
+      <p class="section-footnote">Paired clips start together and retain their individual durations. Each demonstrates the same task in a different scene.</p>
+    </section>
+
+    <section id="citation" class="section container citation-section" aria-labelledby="citation-title"><div class="section-heading"><div><p class="eyebrow">04 / Citation</p><h2 id="citation-title">BibTeX</h2></div><button id="copy-citation" class="button" type="button">Copy citation</button></div><pre><code id="bibtex">@inproceedings{shen2026biroad,
+  title  = {{BiRoAD}: Learning Shared and Role-Adaptive
+            Representations for Bimanual Manipulation},
+  author = {Shen, Yan and Liu, Yuchen and Jiang, Feng and
+            Hu, Hangtian and Li, Xiaoqi and Chen, Shu and
+            Wu, Ruihai and Dong, Hao},
+  booktitle = {Proceedings of the Conference on Robot Learning (CoRL)},
+  year   = {2026}
+}</code></pre><p id="copy-status" class="section-footnote" role="status" aria-live="polite"></p></section>
+  </main>
+  <footer class="site-footer container"><a class="wordmark" href="#main">Bi<span>RoAD</span><span class="brand-dot">.</span></a><p>Learning to coordinate. Learning to adapt.</p><a href="assets/paper/biroad.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
